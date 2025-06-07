@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para a melhor</title>
+    <link rel="icon" href="Index/favicon-16x16.png" type="image/x-icon">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url('https://www.10wallpaper.com/wallpaper/1920x1200/1109/Sunflower_Flower_Field-Summer_romance_Feelings_1920x1200.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            padding: 20px;
+        }
+        
+        .container {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            padding: 40px;
+            width: 100%;
+            max-width: 800px;
+            text-align: center;
+            color: #fff;
+            min-height: 500px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+            margin: 10px;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background: rgba(255, 182, 193, 0.5); /* Rosa leve ao passar o mouse */
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-red {
+            background: rgba(255, 0, 0, 0.5);
+        }
+        
+        .btn-blue {
+            background: rgba(0, 0, 255, 0.5);
+        }
+        
+        .hidden {
+            display: none !important;
+        }
+        
+        .video-container {
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%;
+            position: relative;
+            margin: 20px 0;
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+        }
+        
+        .quiz-container {
+            background: rgba(255, 255, 255, 0.3);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            width: 100%;
+            max-width: 500px;
+        }
+        
+        .quiz-option {
+            display: block;
+            margin: 10px;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .quiz-option:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .crowns-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        
+        .crown {
+            width: 100px;
+            height: 100px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .crown:hover {
+            transform: translateY(-10px);
+        }
+        
+        .final-text {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            animation: fadeIn 1s;
+        }
+        
+        .chocolate-box {
+            width: 300px;
+            height: 300px;
+            margin: 0 auto;
+            animation: appear 1.5s forwards;
+            transform: scale(0);
+        }
+        
+        @keyframes appear {
+            0% { transform: scale(0) rotate(0deg); }
+            50% { transform: scale(1.2) rotate(10deg); }
+            100% { transform: scale(1) rotate(0deg); }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* Centralização adicional para as fases */
+        .phase-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Fase 1 - Botão 1 -->
+        <div id="phase1" class="phase-content">
+            <h1>Vamos la</h1>
+            <p>Clique no botão para entrar no """"""Jogo""""""</p>
+            <button id="btn1" class="btn">Começar Jogo</button>
+        </div>
+        
+        <!-- Fase 2 - Botões 2 e 3 -->
+        <div id="phase2" class="hidden phase-content">
+            <button id="btn2" class="btn btn-red">Opção Vermelha</button>
+            <button id="btn3" class="btn btn-blue">Opção Azul</button>
+        </div>
+        
+        <!-- Fase 3 - Vídeo ou Quiz -->
+        <div id="phase3-video" class="hidden phase-content">
+            <div class="video-container">
+                <video width="560" height="315" controls id="meuVideo">
+                    <source src="Index/videoplayback.mp4" type="video/mp4">
+                </video>
+               <p>Apenas faça, tu não pode ter talento, mas raça é obrigação, sem perdão 🦾</p>
+               <button id="nextAfterVideo" class="btn">Próximo</button>
+            </div>
+            
+        </div>
+        
+        <div id="phase3-quiz" class="hidden phase-content">
+            <div class="quiz-container">
+                <h3>Escolha uma das brincadeiras</h3>
+                <div class="quiz-option" data-option="A">A) Jogo do veneno (Colocamos algumas comidas na mesa e escolhemos qual nao pode comer)</div>
+                <div class="quiz-option" data-option="B">B) Jogo do cadeado (No caderno colocamos 5 numeros e um tem que acertar a sequencia, quem acertar tem direito a um pedido)</div>
+                <div class="quiz-option" data-option="C">C) Jogo de adivinhar a palavra pela inicial (Colocamos 5 iniciais de letras diferente porem a cada acerto a outra palavra tem algo a ver com a anterior)</div>
+                <div class="quiz-option" data-option="D">D) Todas</div>
+            </div>
+            <button id="nextAfterQuiz" class="btn hidden">Próximo</button>
+        </div>
+        
+        <!-- Fase 4 - Coroas -->
+        <div id="phase4" class="hidden phase-content">
+            <h2>Escolha sua favorita</h2>
+            <div class="crowns-container">
+                <img src="Index/Cinder.png" alt="" class="crown" data-crown="1">
+                <img src="Index/prin.png" alt="" class="crown" data-crown="2">
+                <img src="Index/flo.png" alt="" class="crown" data-crown="3">
+            </div>
+        </div>
+        
+        <!-- Fase 5 - Texto final e chocolate -->
+        <div id="phase5" class="hidden phase-content">
+            <p class="final-text">Parabéns! Você completou todas as etapas do ""jogo!""</p>
+            <button id="finalButton" class="btn">Revelar Prêmio</button>
+        </div>
+        
+        <div id="chocolate" class="hidden phase-content">
+            <img src="Index/caixa.png   " alt="Caixa de chocolate" class="chocolate-box">
+            Você pode refazer e apertar no botão de outra cor
+        </div>
+    </div>
+
+    <script>
+        // Elementos do DOM
+        const phase1 = document.getElementById('phase1');
+        const phase2 = document.getElementById('phase2');
+        const phase3Video = document.getElementById('phase3-video');
+        const phase3Quiz = document.getElementById('phase3-quiz');
+        const phase4 = document.getElementById('phase4');
+        const phase5 = document.getElementById('phase5');
+        const chocolate = document.getElementById('chocolate');
+        const btn1 = document.getElementById('btn1');
+        const btn2 = document.getElementById('btn2');
+        const btn3 = document.getElementById('btn3');
+        const nextAfterVideo = document.getElementById('nextAfterVideo');
+        const nextAfterQuiz = document.getElementById('nextAfterQuiz');
+        const finalButton = document.getElementById('finalButton');
+        const quizOptions = document.querySelectorAll('.quiz-option');
+        const crowns = document.querySelectorAll('.crown');
+
+        // Event Listeners
+        btn1.addEventListener('click', () => {
+            phase1.classList.add('hidden');
+            phase2.classList.remove('hidden');
+        });
+        
+        btn2.addEventListener('click', () => {
+            phase2.classList.add('hidden');
+            phase3Video.classList.remove('hidden');
+        });
+        
+        btn3.addEventListener('click', () => {
+            phase2.classList.add('hidden');
+            phase3Quiz.classList.remove('hidden');
+        });
+        
+        nextAfterVideo.addEventListener('click', () => {
+            phase3Video.classList.add('hidden');
+            phase4.classList.remove('hidden');
+        });
+        
+        quizOptions.forEach(option => {
+            option.addEventListener('click', (e) => {
+                const selectedOption = e.target.getAttribute('data-option');
+                alert(`Você escolheu a opção ${selectedOption}`);
+                nextAfterQuiz.classList.remove('hidden');
+                
+                // Criar e baixar um arquivo TXT
+                const content = `Resposta da muie: ${selectedOption}`;
+                const blob = new Blob([content], { type: 'text/plain' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'resposta_jogo.txt';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            });
+        });
+        
+        nextAfterQuiz.addEventListener('click', () => {
+            phase3Quiz.classList.add('hidden');
+            phase4.classList.remove('hidden');
+        });
+        
+        crowns.forEach(crown => {
+            crown.addEventListener('click', () => {
+                phase4.classList.add('hidden');
+                phase5.classList.remove('hidden');
+            });
+        });
+        
+        finalButton.addEventListener('click', () => {
+            phase5.classList.add('hidden');
+            chocolate.classList.remove('hidden');
+        });
+  const video = document.getElementById("meuVideo");
+  video.volume = 0.3; // Define o volume para 30%
+    </script>
+</body>
+</html>

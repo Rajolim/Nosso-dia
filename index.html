@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Site Elegante</title>
+    <link rel="icon" href="Index/favicon-16x16.png" type="image/x-icon">
+    <style>
+        /* Reset e estilos base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            padding: 20px;
+        }
+        
+        /* Container principal com efeito glass */
+        .container {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            padding: 40px;
+            width: 100%;
+            max-width: 800px;
+            text-align: center;
+            color: #fff;
+        }
+        
+        /* Imagem redonda */
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .profile-img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+        }
+        
+        /* Textos */
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Botão */
+        .btn {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+        
+        .btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Seção para trocar imagem */
+        .image-upload {
+            margin-top: 20px;
+        }
+        
+        .image-upload input {
+            display: none;
+        }
+        
+        .image-upload label {
+            font-size: 0.9rem;
+            color: #fff;
+            cursor: pointer;
+            text-decoration: underline;
+            opacity: 0.8;
+        }
+        
+        .image-upload label:hover {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Imagem redonda (pode ser trocada) -->
+        <img src="Index/WhatsApp Image 2025-06-06 at 14.26.27.jpeg" alt="Foto de perfil" class="profile-img" id="profileImage">
+        
+        <!-- Opção para trocar a imagem -->
+        <!--<div class="image-upload">
+            <input type="file" id="imageUpload" accept="image/*">
+            <label for="imageUpload">Trocar imagem</label>
+        </div>-->
+        
+        <h1>Feliz dia dos namorados 💕</h1>
+        <p>Peixinha, meu amor, te amo mais a cada dia. Tenho tanto orgulho de você e de tudo que conquistamos juntos. Obrigado por me apoiar sempre. Feliz Dia dos Namorados, meu tudo! 💖</p>
+        <p>Às vezes pode parecer que estou cobrando ou sendo grosso com você, mas não é isso. Quero que olhe para si mesma e enxergue o quanto você é incrível. Você tem tudo para ser uma mulher empoderada — só falta acreditar em si mesma. Porque eu já acredito, e muito.</p>
+        <p> Te amo ❤️ </p>
+        
+        <!-- Botão para página 2 -->
+        <a href="ParaVoceMeuAmor.html" class="btn">Proximo</a>
+    </div>
+
+    <script>
+        // Função para trocar a imagem
+        document.getElementById('imageUpload').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('profileImage').src = e.target.result;
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+</body>
+</html>
